@@ -1,0 +1,649 @@
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+@import url("https://fonts.googleapis.com/css?family=Roboto:500");
+.directory-main {
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: auto;
+  align-items: center; }
+  .directory-main .directory-container {
+    width: 100%;
+    height: 100%;
+    animation: page-grow 1s;
+    margin: auto; }
+  .directory-main .directory-header {
+    width: 80%;
+    height: 40px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    margin: auto;
+    border-bottom: 1px solid white;
+    display: flex;
+    align-items: flex-end; }
+  .directory-main .directory-paths-container {
+    width: 1000px;
+    height: 500px;
+    animation: page-grow 1s;
+    margin: auto;
+    margin-top: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around; }
+  .directory-main .path-column {
+    width: 250px;
+    height: 100%;
+    animation: page-grow 1s; }
+  .directory-main .path-title-container {
+    width: 100%;
+    height: 30px; }
+  .directory-main .path-title {
+    font-family: "Press Start 2P";
+    font-size: 25px;
+    float: right;
+    border-bottom: 1px solid violet; }
+  .directory-main .path-table {
+    animation: page-grow 1s;
+    width: auto;
+    height: auto;
+    float: right; }
+    .directory-main .path-table .path-section-title {
+      padding: 20px 0 20px 0;
+      font-family: "Press Start 2P";
+      font-size: 17px; }
+    .directory-main .path-table .path-chapter-title {
+      font-family: "Press Start 2P";
+      font-size: 15px;
+      color: white;
+      float: right;
+      padding-bottom: 10px;
+      border-right: 1px solid black; }
+    .directory-main .path-table .path-chapter-title:hover {
+      border-right: 1px solid yellow; }
+
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+:root {
+  --neon-text-white: 0 0 5px white, 0 0 10px white, 0 0 20px white, 0 0 40px white, 0 0 80px white, 0 0 90px white, 0 0 100px white, 0 0 150px white;
+  --neon-text-violet: 0 0 5px violet, 0 0 10px violet, 0 0 20px violet, 0 0 40px violet, 0 0 80px violet, 0 0 90px violet, 0 0 100px violet, 0 0 150px violet;
+  --neon-box-yellow: 0 0 5px yellow, 0 0 10px yellow, 0 0 20px yellow, 0 0 40px yellow, 0 0 80px yellow, 0 0 90px yellow, 0 0 10px yellow, 0 0 10px yellow;
+  --low-neon-violet: 0 0 20px violet, 0 0 1px violet, 0 0 1px violet, 0 0 1px violet, 0 0 1px violet, 0 0 1px violet, 0 0px 1px violet, 0 0px 1px violet;
+  --low-neon-grey: 0 0 20px grey, 0 0 1px grey, 0 0 1px grey, 0 0 1px grey, 0 0 1px grey, 0 0 1px grey, 0 0px 1px grey, 0 0px 1px grey; }
+
+* {
+  margin: 0;
+  padding: 0; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
+body {
+  background: black; }
+
+a {
+  text-decoration: none; }
+
+.ss-outer-container {
+  width: 500px;
+  height: 700px;
+  border-left: 3px solid #d3d3d3;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  z-index: 999; }
+  .ss-outer-container .ss-container-top-bar {
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    margin-top: -30px;
+    right: 0;
+    z-index: 999; }
+    .ss-outer-container .ss-container-top-bar p:active {
+      transform: scale(0.7); }
+    .ss-outer-container .ss-container-top-bar p {
+      float: right;
+      font-family: "Press Start 2P";
+      font-size: 20px;
+      color: violet;
+      margin-left: 15px;
+      cursor: pointer; }
+  .ss-outer-container .scroll-bar-hider {
+    width: 500px;
+    height: 700px;
+    overflow: hidden; }
+    .ss-outer-container .scroll-bar-hider .ss-container {
+      width: 520px;
+      height: 720px;
+      margin-left: 5px;
+      overflow: scroll; }
+      .ss-outer-container .scroll-bar-hider .ss-container .ss-text {
+        font-size: 19px;
+        font-family: 'Roboto';
+        text-indent: 20px;
+        color: white;
+        margin: 20px 30px 20px 20px; }
+
+.tool-bar:hover {
+  opacity: 1;
+  transition-duration: .5s;
+  z-index: 100; }
+
+.tool-bar {
+  width: 150px;
+  height: 35px;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  padding: 0 5px 0 5px;
+  opacity: .1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+  .tool-bar .tool {
+    width: 25px;
+    height: 25px;
+    margin: 5px 5px 5px 5px;
+    display: inherit;
+    justify-content: space-around;
+    align-items: center;
+    cursor: pointer; }
+    .tool-bar .tool i {
+      font-size: 25px;
+      color: #313440; }
+
+.grow-container {
+  width: 100%;
+  height: 100%;
+  animation: page-grow 1s;
+  margin: auto; }
+
+.page-title-container .page-title {
+  font-family: "Press Start 2P";
+  font-size: 30px;
+  color: violet;
+  float: right; }
+
+#info-menu {
+  position: absolute;
+  justify-content: space-around;
+  align-items: center;
+  top: -250px;
+  right: -350px;
+  height: 350px;
+  width: 300px;
+  box-shadow: var(--low-neon-grey);
+  background: #d3d3d3; }
+
+.info-menu-text-container {
+  position: absolute;
+  width: 95%;
+  height: 95%; }
+
+.info-menu-text {
+  font-family: "Press Start 2P";
+  font-size: 12px;
+  line-height: 15px;
+  color: black;
+  margin: 0 auto; }
+
+.neon-box {
+  box-shadow: 0 0 5px yellow, 0 0 10px yellow, 0 0 20px yellow, 0 0 40px yellow, 0 0 80px yellow, 0 0 90px yellow, 0 0 10px yellow, 0 0 10px yellow; }
+
+.neon-box-blue {
+  box-shadow: 0 0 5px #3E65C0, 0 0 10px #3E65C0, 0 0 20px #3E65C0, 0 0 40px #3E65C0, 0 0 80px #3E65C0, 0 0 90px #3E65C0, 0 0 10px #3E65C0, 0 0 10px #3E65C0; }
+
+.neon-star {
+  box-shadow: 0 0 5px white, 0 0 2px white, 0 0 20px white, 0 0 10px white, 0 0 10px white, 0 0 10px white, 0 0 5px white, 0 0 5px white; }
+
+.neon-star-blue {
+  box-shadow: 0 0 5px #72bcd4, 0 0 2px #72bcd4, 0 0 20px #72bcd4, 0 0 10px #72bcd4, 0 0 10px #72bcd4, 0 0 10px #72bcd4, 0 0 5px #72bcd4, 0 0 5px #72bcd4; }
+
+.neon-star-violet {
+  text-shadow: 0 0 5px violet, 0 0 2px violet, 0 0 20px violet, 0 0 10px violet, 0 0 10px violet, 0 0 10px violet, 0 0 5px violet, 0 0 5px violet; }
+
+@keyframes neon-flicker {
+  0% {
+    text-shadow: var(--neon-text-violet);
+    color: violet; }
+  25% {
+    text-shadow: var(--neon-text-white);
+    color: white; }
+  24% {
+    text-shadow: var(--neon-text-violet);
+    color: violet; }
+  26% {
+    text-shadow: var(--neon-text-violet);
+    color: violet; }
+  27% {
+    text-shadow: var(--neon-text-white);
+    color: white; }
+  28% {
+    text-shadow: var(--neon-text-violet);
+    color: violet; }
+  29% {
+    text-shadow: var(--neon-text-white);
+    color: white; }
+  30% {
+    text-shadow: var(--neon-text-violet);
+    color: violet; }
+  49% {
+    text-shadow: var(--neon-text-violet);
+    color: violet; }
+  50% {
+    text-shadow: var(--neon-text-white);
+    color: white; }
+  51% {
+    text-shadow: var(--neon-text-violet);
+    color: violet; }
+  54% {
+    text-shadow: var(--neon-text-white);
+    color: white; }
+  55% {
+    text-shadow: var(--neon-text-violet);
+    color: violet; }
+  99% {
+    text-shadow: var(--neon-text-violet);
+    color: violet; }
+  100% {
+    text-shadow: var(--neon-text-white);
+    color: white; } }
+
+@keyframes page-grow {
+  0% {
+    width: 0%;
+    height: 0%; }
+  100% {
+    width: default;
+    height: default; } }
+
+@keyframes text-grow {
+  0% {
+    opacity: 0; }
+  100% {
+    opacity: 1; } }
+
+@keyframes info-menu-open {
+  0% {
+    width: 0%;
+    height: 0%;
+    background: none; }
+  100% {
+    width: default;
+    height: default; } }
+
+@keyframes info-menu-close {
+  0% {
+    width: default;
+    height: default; }
+  100% {
+    width: 1%;
+    height: 1%; } }
+
+@keyframes info-menu-text-container-open {
+  0% {
+    height: 0%; }
+  100% {
+    height: 95%; } }
+
+@keyframes spaceship-enter {
+  0% {
+    right: -20%; }
+  50% {
+    right: -20%; }
+  100% {
+    right: 45%; } }
+
+@keyframes spaceship-shake {
+  0% {
+    margin: 2px 5px 0 0; }
+  10% {
+    margin: 5px 10px 0 0; }
+  20% {
+    margin: 2px 5px 10px 0; }
+  30% {
+    margin: 0px 0px 15px 15px; }
+  40% {
+    margin: 0px 15px 15px 0; }
+  50% {
+    margin: 8px 0 0 10px; }
+  60% {
+    margin: 6px 0 0 8px; }
+  70% {
+    margin: 2px 0 0 4px; }
+  80% {
+    margin: 0 5px 5px 0; }
+  90% {
+    margin: 2px 5px 0 0; }
+  100% {
+    margin: 2px 5px 0 0; } }
+
+@keyframes leg1-spin {
+  0% {
+    top: 10px; }
+  50% {
+    top: 74px; }
+  51% {
+    top: 75px; }
+  100% {
+    top: 10px;
+    z-index: 1; } }
+
+@keyframes leg2-spin {
+  0% {
+    top: 75px; }
+  50% {
+    top: 11px;
+    z-index: 1; }
+  51% {
+    top: 10px;
+    z-index: 3; }
+  100% {
+    top: 75px;
+    z-index: 3; } }
+
+@keyframes flame-shake {
+  0% {
+    margin: 15px 0 0 25px; }
+  15% {
+    margin: 15px 0 0 20px; }
+  30% {
+    margin: 17px 0 0 26px; }
+  45% {
+    margin: 15px 0 0 28px; }
+  60% {
+    margin: 16px 0 10px 21px; }
+  75% {
+    margin: 15px 0 0 25px; }
+  90% {
+    margin: 14px 0 5px 24px; }
+  100% {
+    margin: 16px 0 0 25px; } }
+
+@keyframes passing-star-1s {
+  0% {
+    left: -165px; }
+  100% {
+    left: 110%; } }
+
+@keyframes passing-star-2s {
+  0% {
+    left: -165px; }
+  25% {
+    left: -165px; }
+  50% {
+    left: 110%; }
+  100% {
+    left: 110%; } }
+
+@keyframes passing-star-3s {
+  0% {
+    left: -165px; }
+  20% {
+    left: -165px; }
+  40% {
+    left: -165px; }
+  60% {
+    left: -165px; }
+  80% {
+    left: 110%; }
+  100% {
+    left: 110%; } }
+
+@keyframes passing-star-4s {
+  0% {
+    left: -165px; }
+  14% {
+    left: -165px; }
+  28% {
+    left: -165px; }
+  42% {
+    left: -165px; }
+  56% {
+    left: -165px; }
+  70% {
+    left: -165px; }
+  84% {
+    left: 110%; }
+  100% {
+    left: 110%; } }
+
+@keyframes passing-star-5s {
+  0% {
+    left: -165px; }
+  10% {
+    left: -165px; }
+  20% {
+    left: -165px; }
+  30% {
+    left: -165px; }
+  40% {
+    left: -165px; }
+  50% {
+    left: -165px; }
+  60% {
+    left: -165px; }
+  70% {
+    left: -165px; }
+  80% {
+    left: 110%; }
+  100% {
+    left: 110%; } }
+
+@keyframes passing-star-6s {
+  0% {
+    left: -165px; }
+  9% {
+    left: -165px; }
+  18% {
+    left: -165px; }
+  27% {
+    left: -165px; }
+  36% {
+    left: -165px; }
+  45% {
+    left: -165px; }
+  54% {
+    left: -165px; }
+  63% {
+    left: -165px; }
+  72% {
+    left: -165px; }
+  81% {
+    left: -165px; }
+  90% {
+    left: 110%; }
+  100% {
+    left: 110%; } }
+
+@keyframes passing-star-7s {
+  0% {
+    left: -165px; }
+  7% {
+    left: -165px; }
+  14% {
+    left: -165px; }
+  21% {
+    left: -165px; }
+  28% {
+    left: -165px; }
+  35% {
+    left: -165px; }
+  42% {
+    left: -165px; }
+  49% {
+    left: -165px; }
+  56% {
+    left: -165px; }
+  63% {
+    left: -165px; }
+  70% {
+    left: -165px; }
+  77% {
+    left: -165px; }
+  84% {
+    left: 110%; }
+  100% {
+    left: 110%; } }
+
+@keyframes pride-color-swap {
+  14% {
+    color: 'red'; }
+  28% {
+    color: 'orange'; }
+  42% {
+    color: 'yellow'; }
+  56% {
+    color: 'green'; }
+  70% {
+    color: 'blue'; }
+  84% {
+    color: 'indigo'; }
+  100% {
+    color: 'violet'; } }
+
+@keyframes ss-open {
+  0% {
+    margin-left: -100%; }
+  100% {
+    margin-left: default;
+    visibility: visible; } }
+
+@keyframes ss-close {
+  0% {
+    margin-left: default; }
+  100% {
+    margin-left: -100%;
+    visibility: hidden; } }
+
+@keyframes ss-border-fade-out {
+  0% {
+    border-left: default; }
+  100% {
+    border-left: 0px; } }
+
+@keyframes ss-border-fade-in {
+  0% {
+    border-left: 0px; }
+  100% {
+    border-left: default; } }
+
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+@import url("https://fonts.googleapis.com/css?family=Quicksand:300");
+.start-main {
+  background: black;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around; }
+  .start-main .start-title-container {
+    position: fixed;
+    margin: auto;
+    width: auto;
+    text-align: center; }
+    .start-main .start-title-container .start-title {
+      display: absolute;
+      font-family: "Press Start 2P";
+      font-size: 60px;
+      color: white;
+      animation: text-grow 2s, neon-flicker 7s infinite; }
+    .start-main .start-title-container .start-title:hover {
+      color: white; }
+
+@import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+.he-main {
+  width: 100%;
+  height: 100vh;
+  background: #030005;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center; }
+  .he-main .spaceship-container {
+    width: 250px;
+    position: fixed;
+    height: 100px;
+    right: 45%;
+    top: 45%; }
+  .he-main .inner-spaceship-container {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    animation: spaceship-shake 2s infinite; }
+    .he-main .inner-spaceship-container .spaceship {
+      float: left;
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      width: 100px;
+      height: 100px;
+      background-color: gray;
+      border: 1px solid black;
+      border-radius: 100px;
+      box-shadow: -9px -9px 0px 3px darkslategray inset;
+      overflow: hidden;
+      z-index: 2; }
+      .he-main .inner-spaceship-container .spaceship .window {
+        position: absolute;
+        width: 50px;
+        height: 100px;
+        left: -15px;
+        border: 1px solid black;
+        border-radius: 50%;
+        background: black; }
+    .he-main .inner-spaceship-container .leg {
+      width: 150px;
+      height: 15px;
+      position: absolute;
+      left: 70px;
+      background: grey;
+      border: 1px solid black;
+      border-top-right-radius: 50%;
+      border-bottom-right-radius: 50%;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      box-shadow: -9px -9px 0px -3px darkslategray inset; }
+    .he-main .inner-spaceship-container .leg1 {
+      top: 10px;
+      z-index: 3;
+      animation: leg1-spin 2.5s infinite; }
+    .he-main .inner-spaceship-container .leg2 {
+      z-index: 1;
+      top: 75px;
+      animation: leg2-spin 2.5s infinite; }
+    .he-main .inner-spaceship-container .flame-container {
+      position: absolute;
+      width: 100px;
+      height: auto;
+      display: inline-block;
+      left: 90px;
+      top: 20px;
+      z-index: 2;
+      animation: flame-shake 1s infinite; }
+      .he-main .inner-spaceship-container .flame-container .flame {
+        background: #3E65C0;
+        opacity: .7; }
+      .he-main .inner-spaceship-container .flame-container .flame-main {
+        width: 75px;
+        height: 7px;
+        float: left; }
+      .he-main .inner-spaceship-container .flame-container .flame-secondary {
+        width: 45px;
+        height: 5px;
+        float: right;
+        margin: 3px 0 3px 0; }
+  .he-main .star-long {
+    height: 1px;
+    width: 150px;
+    background: white;
+    position: fixed;
+    left: -165px;
+    top: 200px; }
+
+/*# sourceMappingURL=maps/styles.css.map */

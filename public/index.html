@@ -1,0 +1,73 @@
+    <!DOCTYPE html>
+    <html ng-app='sentience'>
+      <title>Sentience</title>
+      <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <link href='./styles.css' rel='stylesheet' />
+      </head>
+      <body ng-controller='mainCtrl'>
+
+        <div class='ss-outer-container' id='ss-outer-container'>
+          <div class='ss-container-top-bar'>
+            <p id='ss-close' onclick='ssToggle()'>X</p>
+          </div>
+        <div class='scroll-bar-hider' id='scroll-bar-hider'>
+        <div class='ss-container' id='ss-container'>
+          <p class='ss-text'>
+            Words and words gotta test the display of this text so that it looks a bit normal. For some reason Atom breaks when i copy and paste any text so here i am righting in my own filler. words and words gotta test the display of this text so that it looks a bit normal. For some reason Atom breaks when i copy and paste any text so here i am righting in my own filler. words and words gotta test the display of this text so that it looks a bit normal. For some reason Atom breaks when i copy and paste any text so here i am righting in my own filler. words and words gotta test the display of this text so that it looks a bit normal. For some reason Atom breaks when i copy and paste any text so here i am righting in my own filler.
+          </p>
+
+          <p class='ss-text'>
+            Words and words gotta test the display of this text so that it looks a bit normal. For some reason Atom breaks when i copy and paste any text so here i am righting in my own filler. words and words gotta test the display of this text so that it looks a bit normal. For some reason Atom breaks when i copy and paste any text so here i am righting in my own filler. words and words gotta test the display of this text so that it looks a bit normal. For some reason Atom breaks when i copy and paste any text so here i am righting in my own filler. words and words gotta test the display of this text so that it looks a bit normal. For some reason Atom breaks when i copy and paste any text so here i am righting in my own filler.
+          </p>
+
+          <p class='ss-text'>
+            Words and words gotta test the display of this text so that it looks a bit normal. For some reason Atom breaks when i copy and paste any text so here i am righting in my own filler. words and words gotta test the display of this text so that it looks a bit normal. For some reason Atom breaks when i copy and paste any text so here i am righting in my own filler. words and words gotta test the display of this text so that it looks a bit normal. For some reason Atom breaks when i copy and paste any text so here i am righting in my own filler. words and words gotta test the display of this text so that it looks a bit normal. For some reason Atom breaks when i copy and paste any text so here i am righting in my own filler.
+          </p>
+        </div>
+        </div>
+        </div>
+
+        <div class='tool-bar' id='tool-bar'>
+          <a ui-sref='start'>
+            <div class='tool blank-tool'>
+              <i class="fa fa-home" aria-hidden="true"></i>
+            </div>
+          </a>
+
+          <a ui-sref='directory'>
+            <div class='tool navigation-tool'>
+              <i class="fa fa-compass" aria-hidden="true"></i>
+            </div>
+          </a>
+
+          <div class='tool read-tool' onclick='ssToggle()'>
+            <i class="fa fa-book" aria-hidden="true"></i>
+          </div>
+
+          <div class='tool settings-tool'>
+            <i class="fa fa-cog" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <ui-view></ui-view>
+
+        <!-- {{test}} -->
+
+        <!-- vvv electron js files vvv -->
+
+        <script>if (typeof module === 'object') {window.module = module; module = undefined;}</script>
+          <script src='vanilla-js/he.js'></script>
+          <script src='vanilla-js/ss.js'></script>
+        <script>if (window.module) module = window.module;</script>
+
+        <!-- ^^^ electron js files ^^^ -->
+
+        <script src="https://use.fontawesome.com/c334b39ec1.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+        <script src='https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.js'></script>
+        <script src='https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js'></script>
+        <script src='./js/bundle.js'></script>
+      </body>
+      </html>

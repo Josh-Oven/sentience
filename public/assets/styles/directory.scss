@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300');
+@import url('https://fonts.googleapis.com/css?family=Roboto:500');
+
+$retro: 'Press Start 2P';
+
+.directory-main {
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: auto;
+  align-items: center;
+
+  .directory-container {
+    width: 100%;
+    height: 100%;
+    animation: page-grow 1s;
+    margin: auto;
+    // border: 1px solid white;
+  }
+
+  .directory-header {
+    width: 80%;
+    height: 40px;
+    padding-top: 20px;
+    padding-bottom: 5px;
+    margin: auto;
+    border-bottom: 1px solid white;
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .directory-paths-container {
+    width: 1000px;
+    height: 500px;
+    animation: page-grow 1s;
+    margin: auto;
+    margin-top: 40px;
+    // border: 1px solid red;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+
+  .path-column {
+    width: 250px;
+    height: 100%;
+    // border: 1px solid red;
+    animation: page-grow 1s;
+  }
+
+  .path-title-container {
+    width: 100%;
+    height: 30px;
+    // border: 1px solid grey;
+  }
+
+  .path-title {
+    font-family: $retro;
+    font-size: 25px;
+    float: right;
+    border-bottom: 1px solid violet;
+  }
+
+  .path-table {
+    animation: page-grow 1s;
+    width: auto;
+    height: auto;
+    float: right;
+    // border: 1px solid yellow;
+
+    // tr {
+    //   animation: page-grow 1s;
+    // }
+    //
+    // td {
+    //   animation: page-grow 1s;
+    // }
+    //
+    // th {
+    //   animation: page-grow 1s;
+    // }
+
+    .path-section-title {
+      padding: 20px 0 20px 0;
+      font-family: $retro;
+      font-size: 17px;
+
+    }
+
+    .path-chapter-title {
+      font-family: $retro;
+      font-size: 15px;
+      color: white;
+      float: right;
+      padding-bottom: 10px;
+      border-right: 1px solid black;
+    }
+
+    .path-chapter-title:hover {
+      border-right: 1px solid yellow;
+    }
+
+    //  .path-chapter-title:visited {
+    //    color: none;
+    //  }
+  }
+
+}

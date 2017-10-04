@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+@import url('https://fonts.googleapis.com/css?family=Quicksand:300');
+
+$retro: 'Press Start 2P';
+
+.start-main {
+  background: black;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  .start-title-container {
+    position: fixed;
+    margin: auto;
+    width: auto;
+    text-align: center;
+    // border: 1px solid white;
+
+    .start-title {
+      display: absolute;
+      font-family: $retro;
+      font-size: 60px;
+      color: white;
+      animation:
+        text-grow 2s,
+        neon-flicker 7s infinite;
+    }
+
+    .start-title:hover {
+      color: white;
+    }
+  }
+
+
+
+
+}
