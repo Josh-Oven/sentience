@@ -54,6 +54,7 @@ var character = {
   y: 400,
   speedMultiplier: 20,
   element: document.getElementById("character")
+  // element.style.animation = 'spaceship-enter 6s infinite';
 };
 
 /// key detection (better to use addEventListener, but this will do)
@@ -125,16 +126,6 @@ setInterval(function () {
 
     distance = getDistanceBetweenElements(document.getElementById("character"), document.getElementById("distance-tester"));
 
-    // setInterval(function(){
-    //   let currentDistance = distance;
-    //   // console.log(currentDistance)
-    //
-    //   if (distance > currentDistance || distance < currentDistance) {
-    //     console.log(distance)
-    //     return;
-    //   }
-    // }, 1000/24);
-
-    console.log(distance);
+    // console.log(distance);
   })();
 }, 1000 / 24);

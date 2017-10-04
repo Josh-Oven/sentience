@@ -54,6 +54,7 @@ var character = {
   y: 400,
   speedMultiplier: 20,
   element: document.getElementById("character")
+  // element.style.animation = 'spaceship-enter 6s infinite';
 };
 
 /// key detection (better to use addEventListener, but this will do)
@@ -78,7 +79,6 @@ var moveCharacter = function(dx, dy){
   character.y += (dy||0) * character.speedMultiplier;
   character.element.style.left = character.x + 'px';
   character.element.style.top = character.y + 'px';
-
 };
 
 /// character control
@@ -130,19 +130,9 @@ setInterval(function(){
       };
 
       distance = getDistanceBetweenElements(document.getElementById("character"),
-                                                document.getElementById("distance-tester"));
+      document.getElementById("distance-tester"));
 
-      // setInterval(function(){
-      //   let currentDistance = distance;
-      //   // console.log(currentDistance)
-      //
-      //   if (distance > currentDistance || distance < currentDistance) {
-      //     console.log(distance)
-      //     return;
-      //   }
-      // }, 1000/24);
-
-      console.log(distance);
+      // console.log(distance);
 
   })();
 
