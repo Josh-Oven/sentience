@@ -89,7 +89,7 @@ a {
 .ss-outer-container {
   width: 500px;
   height: 700px;
-  border-left: 3px solid #d3d3d3;
+  border-left: 5px solid #d3d3d3;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -322,6 +322,12 @@ a {
   100% {
     margin: 2px 5px 0 0; } }
 
+@keyframes spaceship-shake-stop {
+  0% {
+    margin: default; }
+  100% {
+    margin: default; } }
+
 @keyframes leg1-spin {
   0% {
     top: 10px; }
@@ -532,6 +538,22 @@ a {
   100% {
     border-left: default; } }
 
+@keyframes distance-test {
+  33% {
+    top: 45%; }
+  66% {
+    top: 55%; }
+  100% {
+    top: 50%; } }
+
+@keyframes distance-test-horizontal {
+  33% {
+    left: 25%; }
+  66% {
+    left: 30%; }
+  100% {
+    left: 25%; } }
+
 @import url("https://fonts.googleapis.com/css?family=Press+Start+2P");
 @import url("https://fonts.googleapis.com/css?family=Quicksand:300");
 .start-main {
@@ -565,12 +587,25 @@ a {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center; }
+  .he-main .distance-tester {
+    position: absolute;
+    top: 50%;
+    left: 25%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    background: red;
+    animation: distance-test-horizontal 2s infinite; }
   .he-main .spaceship-container {
     width: 250px;
-    position: fixed;
     height: 100px;
-    right: 45%;
-    top: 45%; }
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    animation: spaceship-enter 6s; }
   .he-main .inner-spaceship-container {
     position: absolute;
     width: 100px;

@@ -1,6 +1,8 @@
-let spaceship = document.getElementById('spaceship');
+let sapceship = document.getElementById('character');
 let menuText = document.getElementById('info-menu-text');
 let infoMenu = document.getElementById('info-menu');
+let distanceTester = document.getElementById('distance-tester');
+let distance;
 
 infoMenu.style.display = 'none';
 
@@ -36,3 +38,112 @@ function openMenu () {
     }, 700);
   }
 };
+
+///////////////////////////////////////////////////////////////
+
+/// store key codes and currently pressed ones
+var keys = {};
+    keys.UP = 38;
+    keys.LEFT = 37;
+    keys.RIGHT = 39;
+    keys.DOWN = 40;
+
+/// store reference to character's position and element
+var character = {
+  x: 700,
+  y: 400,
+  speedMultiplier: 20,
+  element: document.getElementById("character")
+};
+
+/// key detection (better to use addEventListener, but this will do)
+document.body.onkeyup =
+document.body.onkeydown = function(e){
+
+  // spaceship.style.animation = 'spaceship-shake-stop 1s infinite';
+
+  if (e.preventDefault) {
+    e.preventDefault();
+  }
+  else {
+    e.returnValue = false;
+  }
+  var kc = e.keyCode || e.which;
+  keys[kc] = e.type == 'keydown';
+};
+
+/// character movement update
+var moveCharacter = function(dx, dy){
+  character.x += (dx||0) * character.speedMultiplier;
+  character.y += (dy||0) * character.speedMultiplier;
+  character.element.style.left = character.x + 'px';
+  character.element.style.top = character.y + 'px';
+
+};
+
+/// character control
+var detectCharacterMovement = function(){
+  if ( keys[keys.LEFT] ) {
+    moveCharacter(-1, 0);
+  }
+  if ( keys[keys.RIGHT] ) {
+    moveCharacter(1, 0);
+  }
+  if ( keys[keys.UP] ) {
+    moveCharacter(0, -1);
+  }
+  if ( keys[keys.DOWN] ) {
+    moveCharacter(0, 1);
+  }
+};
+
+/// update current position on screen
+moveCharacter();
+
+/// game loop
+setInterval(function(){
+      detectCharacterMovement();
+    }, 1000/24);
+
+///////////////////////////////////////////////////////////////
+
+setInterval(function(){
+
+  (function() {
+
+      var getPositionAtCenter = function (element) {
+          var data = element.getBoundingClientRect();
+          return {
+              x: data.left + data.width / 2,
+              y: data.top + data.height / 2
+          };
+      };
+
+      var getDistanceBetweenElements = function(a, b) {
+          var aPosition = getPositionAtCenter(a);
+          var bPosition = getPositionAtCenter(b);
+
+          return Math.sqrt(
+              Math.pow(aPosition.x - bPosition.x, 2) +
+              Math.pow(aPosition.y - bPosition.y, 2)
+          );
+      };
+
+      distance = getDistanceBetweenElements(document.getElementById("character"),
+                                                document.getElementById("distance-tester"));
+
+      // setInterval(function(){
+      //   let currentDistance = distance;
+      //   // console.log(currentDistance)
+      //
+      //   if (distance > currentDistance || distance < currentDistance) {
+      //     console.log(distance)
+      //     return;
+      //   }
+      // }, 1000/24);
+
+      console.log(distance);
+
+  })();
+
+}, 1000/24);
