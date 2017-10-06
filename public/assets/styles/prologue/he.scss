@@ -21,7 +21,7 @@ $retro: 'Press Start 2P';
   }
 
   .distance-tester {
-    position: absolute;
+    position: fixed;
     top: 50%;
     left: 25%;
     margin-right: -50%;
@@ -29,26 +29,29 @@ $retro: 'Press Start 2P';
     width: 50px;
     height: 50px;
     background: red;
-    animation: distance-test-horizontal 2s infinite;
+    // animation: passing-star-1s 12s infinite;
   }
 
   .spaceship-container {
-    width: 250px;
-    height: 100px;
-    position: absolute;
+    width: 190px;
+    height: 80px;
+    position: fixed;
     top: 50%;
     left: 50%;
     margin-right: -50%;
+    // padding: 0 30px 30px 0;
     transform: translate(-50%, -50%);
-    // border: 1px solid yellow;
-    animation: spaceship-enter 6s;
+    border: 1px solid yellow;
+    // animation: spaceship-enter 6s;
   }
 
   .inner-spaceship-container {
     position: absolute;
     width: 100px;
     height: 100px;
-    // border: 1px solid white;
+    border: 1px solid white;
+    top: -13px;
+    left: -12px;
     animation: spaceship-shake 2s infinite;
 
     .spaceship {
@@ -64,6 +67,7 @@ $retro: 'Press Start 2P';
       box-shadow: -9px -9px 0px 3px rgba(47, 79, 79, 1.0) inset;
       overflow: hidden;
       z-index: 2;
+      cursor: pointer;
 
       .window {
         position: absolute;

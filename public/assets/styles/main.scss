@@ -73,7 +73,7 @@ a {
 }
 
 #character {
-  cursor: pointer;
+  // cursor: pointer;
 }
 
 .ss-outer-container {
@@ -517,7 +517,7 @@ a {
 }
 
 @keyframes distance-test-horizontal {
-  33% {left: 25%}
+  33% {left: default}
   66% {left: 30%}
-  100% {left: 25%}
+  100% {left: default}
 }

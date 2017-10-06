@@ -1,8 +1,7 @@
-let sapceship = document.getElementById('character');
+let spaceship = document.getElementById('character');
 let menuText = document.getElementById('info-menu-text');
 let infoMenu = document.getElementById('info-menu');
 let distanceTester = document.getElementById('distance-tester');
-let distance;
 
 infoMenu.style.display = 'none';
 
@@ -83,7 +82,10 @@ var moveCharacter = function(dx, dy){
 
 /// character control
 var detectCharacterMovement = function(){
-  if ( keys[keys.LEFT] ) {
+
+  if (keys[keys.LEFT] && impact == true) {
+      moveCharacter(-0.3, 0);
+  } else if ( keys[keys.LEFT] && impact == false) {
     moveCharacter(-1, 0);
   }
   if ( keys[keys.RIGHT] ) {
@@ -107,9 +109,39 @@ setInterval(function(){
 
 ///////////////////////////////////////////////////////////////
 
+let distance;
+
+let impact = false;
+
+let disableTime = function() {
+  setTimeout(function(){
+    console.log('i shouldnt be here')
+    // keys.LEFT = 37;
+    impact = false;
+    return;
+  }, 5000);
+}
+
+
+let characterT = spaceship.getBoundingClientRect().top;
+let characterR = spaceship.getBoundingClientRect().right;
+let characterB = spaceship.getBoundingClientRect().bottom;
+let characterL = spaceship.getBoundingClientRect().left;
+
+let dTestT = distanceTester.getBoundingClientRect().top;
+let dTestR = distanceTester.getBoundingClientRect().right;
+let dTestB = distanceTester.getBoundingClientRect().bottom;
+let dTestL = distanceTester.getBoundingClientRect().left;
+
+console.log(characterT, characterR, characterB, characterL);
+console.log(dTestT, dTestR, dTestB, dTestL);
+
 setInterval(function(){
 
   (function() {
+
+    // console.log(distanceTester.getBoundingClientRect().x);
+    // console.log(spaceship.getBoundingClientRect().x);
 
       var getPositionAtCenter = function (element) {
           var data = element.getBoundingClientRect();
@@ -129,8 +161,23 @@ setInterval(function(){
           );
       };
 
-      distance = getDistanceBetweenElements(document.getElementById("character"),
-      document.getElementById("distance-tester"));
+      impact;
+
+      ///////////
+
+      // if () {
+      //
+      // }
+
+      //////////
+
+      if (distance <= 150) {
+        impact = true;
+        disableTime();
+      }
+
+        distance = getDistanceBetweenElements(document.getElementById("character"),
+        document.getElementById("distance-tester"));
 
       // console.log(distance);
 
