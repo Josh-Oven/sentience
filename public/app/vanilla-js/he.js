@@ -1,4 +1,18 @@
 let spaceship = document.getElementById('character');
+let hull = document.getElementById('spaceship');
+let legOne = document.getElementById('leg1');
+let legTwo = document.getElementById('leg2');
+let shipWindow = document.getElementById('window');
+
+let ship = {
+  spaceship,
+  hull,
+  legOne,
+  legTwo,
+  shipWindow
+}
+// console.log(ship)
+
 let menuText = document.getElementById('info-menu-text');
 let infoMenu = document.getElementById('info-menu');
 let distanceTester = document.getElementById('distance-tester');
@@ -48,19 +62,23 @@ var keys = {};
     keys.DOWN = 40;
 
 /// store reference to character's position and element
+
+let shipRect = spaceship.getBoundingClientRect();
+
+let charX = shipRect.left + shipRect.width / 2;
+let charY = shipRect.top + shipRect.height / 2;
+
 var character = {
-  x: 700,
-  y: 400,
+  x: charX,
+  y: charY,
   speedMultiplier: 20,
-  element: document.getElementById("character")
-  // element.style.animation = 'spaceship-enter 6s infinite';
+  element: spaceship
 };
+// console.log(character.speedMultiplier)
 
 /// key detection (better to use addEventListener, but this will do)
 document.body.onkeyup =
 document.body.onkeydown = function(e){
-
-  // spaceship.style.animation = 'spaceship-shake-stop 1s infinite';
 
   if (e.preventDefault) {
     e.preventDefault();
@@ -109,78 +127,114 @@ setInterval(function(){
 
 ///////////////////////////////////////////////////////////////
 
+let damageColor;
+let damageShade;
+
+let damageFeedBack = function (color, shadeColor){
+
+  ship.hull.style.background = color;
+  ship.hull.style.boxShadow = shadeColor;
+  ship.legOne.style.background = color;
+  ship.legOne.style.boxShadow = shadeColor;
+  ship.legTwo.style.background = color;
+  ship.legTwo.style.boxShadow = shadeColor;
+}
+
 let distance;
 
 let impact = false;
 
 let disableTime = function() {
   setTimeout(function(){
-    console.log('i shouldnt be here')
-    // keys.LEFT = 37;
+    damageColor = 'rgba(128, 128, 128, 1.0)';
+    damageShade = '-9px -9px 0px 3px rgba(47, 79, 79, 1.0) inset';
+    damageFeedBack(damageColor, damageShade);
     impact = false;
-    return;
   }, 5000);
 }
 
+// let removeAsteroid = function(asteroidToBeRemoved){
+//
+// }
 
-let characterT = spaceship.getBoundingClientRect().top;
-let characterR = spaceship.getBoundingClientRect().right;
-let characterB = spaceship.getBoundingClientRect().bottom;
-let characterL = spaceship.getBoundingClientRect().left;
+function ImpactTracker(trackedAsteroid) {
 
-let dTestT = distanceTester.getBoundingClientRect().top;
-let dTestR = distanceTester.getBoundingClientRect().right;
-let dTestB = distanceTester.getBoundingClientRect().bottom;
-let dTestL = distanceTester.getBoundingClientRect().left;
+  this.trackedAsteroid = trackedAsteroid;
 
-console.log(characterT, characterR, characterB, characterL);
-console.log(dTestT, dTestR, dTestB, dTestL);
+  console.log('trackedAsteroid', trackedAsteroid);
 
-setInterval(function(){
-
-  (function() {
-
-    // console.log(distanceTester.getBoundingClientRect().x);
-    // console.log(spaceship.getBoundingClientRect().x);
+  let asteroidTracker = setInterval(function(){
 
       var getPositionAtCenter = function (element) {
-          var data = element.getBoundingClientRect();
-          return {
-              x: data.left + data.width / 2,
-              y: data.top + data.height / 2
-          };
+        var data = element.getBoundingClientRect();
+        return {
+          x: data.left + data.width / 2,
+          y: data.top + data.height / 2
+        };
       };
 
       var getDistanceBetweenElements = function(a, b) {
-          var aPosition = getPositionAtCenter(a);
-          var bPosition = getPositionAtCenter(b);
+        var aPosition = getPositionAtCenter(a);
+        var bPosition = getPositionAtCenter(b);
 
-          return Math.sqrt(
-              Math.pow(aPosition.x - bPosition.x, 2) +
-              Math.pow(aPosition.y - bPosition.y, 2)
-          );
+        return Math.sqrt(
+          Math.pow(aPosition.x - bPosition.x, 2) +
+          Math.pow(aPosition.y - bPosition.y, 2)
+        );
       };
 
-      impact;
+      let distance = getDistanceBetweenElements(document.getElementById("character"), document.getElementById(trackedAsteroid));
 
-      ///////////
+      let characterT = spaceship.getBoundingClientRect().top;
+      let dTestB = document.getElementById(trackedAsteroid).getBoundingClientRect().bottom;
 
-      // if () {
-      //
-      // }
+      console.log(distance);
 
-      //////////
+      (function() {
+        if (dTestB - characterT >= 0 && dTestB - characterT <= 130.5 && distance <= 135) {
+          damageColor = 'rgba(255, 0, 0, .7)';
+          damageShade = '-9px -9px 0px 3px rgba(255, 0, 0, .8) inset';
+          damageFeedBack(damageColor, damageShade);
+          impact = true;
+          disableTime();
+          return;
+        }
+      })();
+      return;
+  }, 1000/24);
 
-      if (distance <= 150) {
-        impact = true;
-        disableTime();
-      }
+  setTimeout(function(){
+    clearInterval(asteroidTracker);
+    document.getElementById(trackedAsteroid).remove();
+    return;
+  }, 5000);
+  return;
+};
 
-        distance = getDistanceBetweenElements(document.getElementById("character"),
-        document.getElementById("distance-tester"));
 
-      // console.log(distance);
+// let randomSpawnTime = function(){
+//   return Math.floor(Math.random() * (10001 - 1000));
+// }
+let fastSpawn = 1000;
+let moderateSpawn = 4000;
+let slowSpawn = 6000;
+let asteroidCount = 0;
+let asteroid = document.createElement('div');
+setInterval(function(){
+  (function makeDiv(){
+    asteroidCount += 1;
+    let divsize = 50;
+
+    var posx = document.body.clientWidth - (divsize/2);
+    var posy = Math.random() * document.body.clientHeight + divsize;
+
+      asteroid.style.cssText = 'top:' + posy + 'px; ' + 'left:' + posx + 'px; ' + ' position:fixed; width:50px; height:50px; background:red; margin-right: 20px; border: 1px solid black;';
+
+      let asteroidClone = asteroid.cloneNode();
+      asteroidClone.id = 'asteroidClone' + asteroidCount.toString();
+      let asteroidCloneId = asteroidClone.id;
+      document.body.appendChild(asteroidClone);
+      let newTracker = new ImpactTracker(asteroidCloneId);
 
   })();
-
-}, 1000/24);
+}, moderateSpawn)
